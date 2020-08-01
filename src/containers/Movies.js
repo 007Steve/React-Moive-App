@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import MovieCard from '../components/MovieCard';
 import './Movies.css';
 import MovieForm from '../containers/MovieForm';
+import { getMovies } from '../actions/movies'
 class Movies extends Component {
-componentDidMount(){
-    this.props.dispatch({
-        type: 'GET_MOVIES_SUCCESS',
-        movies: [{ title: "Mars", image: "https://m.media-amazon.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_.jpg", description: " lorem ips  fgggf", category: "sci-fi", year:"2015" }]
-    })
+
+
+    componentDidMount(){
+    this.props.getMovies()
+        
 }
     render(){
         return(
@@ -27,4 +28,4 @@ const mapStateToProps = (state) => {
     })
 }
 
-  export default connect(mapStateToProps)(Movies);
+  export default connect(mapStateToProps,{getMovies})(Movies);
